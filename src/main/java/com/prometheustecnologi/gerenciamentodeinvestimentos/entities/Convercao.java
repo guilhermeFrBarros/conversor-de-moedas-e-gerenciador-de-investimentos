@@ -1,8 +1,9 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.entities;
 
-import java.time.LocalDate;
+// import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,27 +18,32 @@ public class Convercao {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private Double cotacaoMaxima;
-    private Double cotacaoMinima;
-    private Double cotacaoVenda;
-    private Double cotacaoCompra;
+    private String shortName;
+    private Double amount;
+    private Double maximumPrice;
+    private Double minimumPrice; 
+    private Double salePrice; 
+    private Double buyPrice; 
     private String imgUrl;
-    private String longDrescription;
+    @Column(columnDefinition = "TEXT")
+    private String longDescription;
     // private LocalDate data;
 
     public Convercao() { }
 
-    public Convercao(Long id, String nome, Double cotacaoMaxima,
-     Double cotacaoMinima, Double cotacaoVenda, Double cotacaoCompra, String imgUrl, String longDrescription) 
+    public Convercao(Long id, String nome, Double amount, Double maximumPrice, String shortName,
+     Double minimumPrice, Double salePrice, Double buyPrice, String imgUrl, String longDescription) 
     {
         this.id = id;
         this.nome = nome;
-        this.cotacaoMaxima = cotacaoMaxima;
-        this.cotacaoMinima = cotacaoMinima;
-        this.cotacaoVenda = cotacaoVenda;
-        this.cotacaoCompra = cotacaoCompra;
+        this.amount = amount;
+        this.shortName = shortName;
+        this.maximumPrice = maximumPrice;
+        this.minimumPrice = minimumPrice;
+        this.salePrice = salePrice;
+        this.buyPrice = buyPrice;
         this.imgUrl = imgUrl;
-        this.longDrescription = longDrescription;
+        this.longDescription = longDescription;
     }
 
    
@@ -67,73 +73,84 @@ public class Convercao {
         this.nome = nome;
     } 
 
-    public Convercao nome(String nome) 
+    public String getShortName() {
+        return this.shortName;
+    }
+
+    public void setShortName(String shortName) 
     {
-        setNome(nome);
+        this.shortName = shortName;
+    }
+
+    public Double getAmount() {
+        return  this.amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public Double getMaximumPrice() 
+    {
+        return this.maximumPrice;
+    }
+
+    public void setMaximumPrice(Double maximumPrice) 
+    {
+        this.maximumPrice = maximumPrice;
+    }
+
+    public Convercao maximumPrice(Double maximumPrice) 
+    {
+        setMaximumPrice(maximumPrice);
         return this;
     }
 
-    public Double getCotacaoMaxima() 
+    public Double getMinimumPrice() 
     {
-        return this.cotacaoMaxima;
+        return this.minimumPrice;
     }
 
-    public void setCotacaoMaxima(Double cotacaoMaxima) 
+    public void setMinimumPrice(Double minimumPrice) 
     {
-        this.cotacaoMaxima = cotacaoMaxima;
+        this.minimumPrice = minimumPrice;
     }
 
-    public Convercao cotacaoMaxima(Double cotacaoMaxima) 
+    public Convercao minimumPrice(Double minimumPrice) 
     {
-        setCotacaoMaxima(cotacaoMaxima);
+        setMinimumPrice(minimumPrice);
         return this;
     }
 
-    public Double getCotacaoMinima() 
+    public Double getSalePrice() 
     {
-        return this.cotacaoMinima;
+        return this.salePrice;
     }
 
-    public void setCotacaoMinima(Double cotacaoMinima) 
+    public void setSalePrice(Double salePrice) 
     {
-        this.cotacaoMinima = cotacaoMinima;
+        this.salePrice = salePrice;
     }
 
-    public Convercao cotacaoMinima(Double cotacaoMinima) 
+    public Convercao salePrice(Double salePrice) 
     {
-        setCotacaoMinima(cotacaoMinima);
+        setSalePrice(salePrice);
         return this;
     }
 
-    public Double getCotacaoVenda() 
+    public Double getBuyPrice() 
     {
-        return this.cotacaoVenda;
+        return this.buyPrice;
     }
 
-    public void setCotacaoVenda(Double cotacaoVenda) 
+    public void setBuyPrice(Double buyPrice) 
     {
-        this.cotacaoVenda = cotacaoVenda;
+        this.buyPrice = buyPrice;
     }
 
-    public Convercao cotacaoVenda(Double cotacaoVenda) 
+    public Convercao buyPrice(Double buyPrice) 
     {
-        setCotacaoVenda(cotacaoVenda);
-        return this;
-    }
-
-    public Double getCotacaoCompra() 
-    {
-        return this.cotacaoCompra;
-    }
-
-    public void setCotacaoCompra(Double cotacaoCompra) 
-    {
-        this.cotacaoCompra = cotacaoCompra;
-    }
-
-    public Convercao cotacaoCompra(Double cotacaoCompra) 
-    {
-        setCotacaoCompra(cotacaoCompra);
+        setBuyPrice(buyPrice);
         return this;
     }
 
@@ -155,18 +172,18 @@ public class Convercao {
 
     public String getLongDrescription() 
     {
-        return this.longDrescription;
+        return this.longDescription;
     }
 
-    public void setLongDrescription(String longDrescription) 
+    public void setLongDrescription(String longDescription) 
     {
-        this.longDrescription = longDrescription;
+        this.longDescription = longDescription;
     }
 
    
-    public Convercao longDrescription(String longDrescription) 
+    public Convercao longDescription(String longDescription) 
     {
-        setLongDrescription(longDrescription);
+        setLongDrescription(longDescription);
         return this;
     }
 
