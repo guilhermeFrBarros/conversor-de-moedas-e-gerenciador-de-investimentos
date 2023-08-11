@@ -1,5 +1,6 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.entities;
 
+import java.time.LocalDate;
 // import java.time.LocalDate;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_convercao")
-public class Convercao {
+public class Conversao {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -27,11 +28,11 @@ public class Convercao {
     private String imgUrl;
     @Column(columnDefinition = "TEXT")
     private String longDescription;
-    // private LocalDate data;
+    private LocalDate dataDaCotacao;
 
-    public Convercao() { }
+    public Conversao() { }
 
-    public Convercao(Long id, String nome, Double amount, Double maximumPrice, String shortName,
+    public Conversao(Long id, String nome, Double amount, Double maximumPrice, String shortName,
      Double minimumPrice, Double salePrice, Double buyPrice, String imgUrl, String longDescription) 
     {
         this.id = id;
@@ -57,7 +58,7 @@ public class Convercao {
         this.id = id;
     }
 
-    public Convercao id(Long id) 
+    public Conversao id(Long id) 
     {
         setId(id);
         return this;
@@ -100,7 +101,7 @@ public class Convercao {
         this.maximumPrice = maximumPrice;
     }
 
-    public Convercao maximumPrice(Double maximumPrice) 
+    public Conversao maximumPrice(Double maximumPrice) 
     {
         setMaximumPrice(maximumPrice);
         return this;
@@ -116,7 +117,7 @@ public class Convercao {
         this.minimumPrice = minimumPrice;
     }
 
-    public Convercao minimumPrice(Double minimumPrice) 
+    public Conversao minimumPrice(Double minimumPrice) 
     {
         setMinimumPrice(minimumPrice);
         return this;
@@ -132,7 +133,7 @@ public class Convercao {
         this.salePrice = salePrice;
     }
 
-    public Convercao salePrice(Double salePrice) 
+    public Conversao salePrice(Double salePrice) 
     {
         setSalePrice(salePrice);
         return this;
@@ -148,7 +149,7 @@ public class Convercao {
         this.buyPrice = buyPrice;
     }
 
-    public Convercao buyPrice(Double buyPrice) 
+    public Conversao buyPrice(Double buyPrice) 
     {
         setBuyPrice(buyPrice);
         return this;
@@ -164,7 +165,7 @@ public class Convercao {
         this.imgUrl = imgUrl;
     }
 
-    public Convercao imgUrl(String imgUrl) 
+    public Conversao imgUrl(String imgUrl) 
     {
         setImgUrl(imgUrl);
         return this;
@@ -180,12 +181,14 @@ public class Convercao {
         this.longDescription = longDescription;
     }
 
-   
-    public Convercao longDescription(String longDescription) 
-    {
-        setLongDrescription(longDescription);
-        return this;
+    public LocalDate getDataDaCotacao(){
+        return this.dataDaCotacao; 
     }
+
+    public void setDataDaCotacao(LocalDate dataDaCotacao) {
+        this.dataDaCotacao = dataDaCotacao;
+    }
+
 
     @Override
     public int hashCode(){
@@ -203,7 +206,7 @@ public class Convercao {
         if(getClass() != obj.getClass()){
             return false;
         }
-        Convercao other =  (Convercao) obj;
+        Conversao other =  (Conversao) obj;
         return Objects.equals(id, other.id);
     }
         
