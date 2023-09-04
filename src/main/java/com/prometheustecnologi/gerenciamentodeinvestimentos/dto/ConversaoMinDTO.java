@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.Conversao;
 
+
 public class ConversaoMinDTO {
 
     private Long id;
