@@ -11,9 +11,11 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 
 import org.json.JSONObject;
+import org.springframework.stereotype.Service;
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.Cotacao;
 
+@Service
 public class CotacaoService {
 
     public Cotacao getExchangeRate(String shortName) {
