@@ -1,0 +1,66 @@
+package com.prometheustecnologi.gerenciamentodeinvestimentos.entities;
+
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Tb_bolonging")
+public class Belonging {
+    
+    @EmbeddedId
+    private Belonging_PK id;
+
+    private Integer position;
+
+    public Belonging() {}
+
+    public Belonging(Conversao conversao, ConversaoList conversaoList, Integer position) {
+        this.id = new Belonging_PK(conversao, conversaoList);
+        this.position = position;
+    }
+
+    public Belonging_PK getId() {
+        return id;
+    }
+
+    public void setId(Belonging_PK id) {
+        this.id = id;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Belonging other = (Belonging) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    
+
+}

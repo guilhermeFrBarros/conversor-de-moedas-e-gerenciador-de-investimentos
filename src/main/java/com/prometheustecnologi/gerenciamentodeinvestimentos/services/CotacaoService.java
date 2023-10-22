@@ -13,7 +13,7 @@ import java.time.Duration;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.Cotacao;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.cotacao.Cotacao;
 
 @Service
 public class CotacaoService {
