@@ -1,4 +1,4 @@
-package com.prometheustecnologi.gerenciamentodeinvestimentos.entities;
+package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao;
 
 import java.time.LocalDate;
 // import java.time.LocalDate;

@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.dto.ConversaoMinDTO;
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.Conversao;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.repositories.ConversaoRepository;
 
 @Service
@@ -26,7 +26,7 @@ public class ConversaoService {
     @Autowired
     private ConversaoRepository conversaoRepository;
 
-    public List<ConversaoMinDTO> findAll() {
+    public List<ConversaoMinDTO>  listConversionsInDTO() {
         List<Conversao> result = conversaoRepository.findAll();
        //List<Conversao>  result = conversaoRepository.findAll()
        //var result

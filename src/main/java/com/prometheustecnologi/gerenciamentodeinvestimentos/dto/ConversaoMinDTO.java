@@ -2,7 +2,7 @@ package com.prometheustecnologi.gerenciamentodeinvestimentos.dto;
 
 import java.time.LocalDate;
 
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.Conversao;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
 
 
 public class ConversaoMinDTO {

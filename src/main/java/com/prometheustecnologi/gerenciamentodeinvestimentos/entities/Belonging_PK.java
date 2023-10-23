@@ -1,5 +1,8 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.entities;
 
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversaoList;
+
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

@@ -1,5 +1,8 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.entities;
 
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversaoList;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
