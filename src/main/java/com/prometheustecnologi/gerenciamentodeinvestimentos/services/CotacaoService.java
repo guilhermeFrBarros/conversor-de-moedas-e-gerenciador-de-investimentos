@@ -18,7 +18,18 @@ import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.cotacao.Cot
 @Service
 public class CotacaoService {
 
+    private final HttpClient httpClient;
+
+    public CotacaoService() {
+        this.httpClient = HttpClient.newBuilder()
+                .version(Version.HTTP_2)
+                .connectTimeout(Duration.ofSeconds(8))
+                .followRedirects(Redirect.NORMAL)
+                .build();
+    }
+
     public Cotacao getExchangeRate(String shortName) {
+
 
         JSONObject obj = requestForQuoteAPI(shortName);
 
@@ -37,30 +48,24 @@ public class CotacaoService {
         return cotacao;
     }
 
-
+//refatorar para  melhorar o desempenho com outras bibliotecas
     private JSONObject requestForQuoteAPI(String shortName) {
         String url = "https://economia.awesomeapi.com.br/last/" + shortName;
 
         HttpRequest request = HttpRequest.newBuilder()
                 .GET().uri(URI.create(url))
-                .timeout(Duration.ofSeconds(3))
-                .build();
-
-        HttpClient httpClient = HttpClient.newBuilder()
-                .version(Version.HTTP_2)
-                .connectTimeout(Duration.ofSeconds(3))
-                .followRedirects(Redirect.NORMAL)
+                .timeout(Duration.ofSeconds(6))
                 .build();
 
         HttpResponse<String> response;
         try {
-            response = httpClient.send(request, BodyHandlers.ofString());
+            response = this.httpClient.send(request, BodyHandlers.ofString());
             JSONObject obj = new JSONObject(response.body());
             return obj;
         } catch (IOException | InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            throw new RuntimeException("Ocorreu um erro " + e.getMessage());
+            throw new RuntimeException("Ocorreu um erro = " + e.getMessage());
         }
     }
 }

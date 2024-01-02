@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.dto.ConversaoMinDTO;
@@ -26,13 +28,14 @@ public class ConversaoService {
     @Autowired
     private ConversaoRepository conversaoRepository;
 
-    public List<ConversaoMinDTO>  listConversionsInDTO() {
-        List<Conversao> result = conversaoRepository.findAll();
+    public Page<ConversaoMinDTO> listConversionsInDTO(Pageable  pageable) {
+        Page<Conversao> result = conversaoRepository.findAll(pageable);
        //List<Conversao>  result = conversaoRepository.findAll()
        //var result
-        List<ConversaoMinDTO> dto = converteEmDto(result);
+        Page<ConversaoMinDTO> conversaoMinDTOPage = result.map(ConversaoMinDTO::new);
+
   
-        return dto;
+        return conversaoMinDTOPage;
     }
 
 

@@ -17,7 +17,7 @@ public class ConversaoMinDTO {
 
     public ConversaoMinDTO() {}
     
-    public ConversaoMinDTO( Conversao entity) 
+    public ConversaoMinDTO( Conversao entity )
     {
         this.id = entity.getId();
         this.shortName = entity.getShortName();
