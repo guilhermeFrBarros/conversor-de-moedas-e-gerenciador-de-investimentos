@@ -31,6 +31,8 @@ public class ConversaoController {
     }
 
 
+
+
     // @GetMapping("/param")
     // public ResponseEntity< ConversaoMinDTO > conversion( @RequestParam ( value = )) {
 
@@ -38,6 +40,6 @@ public class ConversaoController {
 
     @GetMapping("/{id}")
     public void detailConversion() {
-// futuro
+
     }
 }
