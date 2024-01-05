@@ -4,13 +4,13 @@ import java.time.LocalDate;
 // import java.time.LocalDate;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.user.User;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_convercao")
 public class Conversao {
@@ -30,6 +30,10 @@ public class Conversao {
     private String longDescription;
     private LocalDate dataDaCotacao;
 
+    @JoinColumn(name = "usuario_pk")
+    @ManyToOne( fetch = FetchType.LAZY)
+    private User usuario;
+
     public Conversao() { }
 
     public Conversao(Long id, String nome, Double amount, Double maximumPrice, String shortName,
@@ -47,74 +51,18 @@ public class Conversao {
         this.longDescription = longDescription;
     }
 
-   
-    public Long getId() 
-    {
-        return this.id;
-    }
-
-    public void setId(Long id) 
-    {
-        this.id = id;
-    }
-
     public Conversao id(Long id) 
     {
         setId(id);
         return this;
     }
 
-    public String getNome() 
-    {
-        return this.nome;
-    }
 
-    public void setNome(String nome) 
-    {
-        this.nome = nome;
-    } 
-
-    public String getShortName() {
-        return this.shortName;
-    }
-
-    public void setShortName(String shortName) 
-    {
-        this.shortName = shortName;
-    }
-
-    public Double getAmount() {
-        return  this.amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public Double getMaximumPrice() 
-    {
-        return this.maximumPrice;
-    }
-
-    public void setMaximumPrice(Double maximumPrice) 
-    {
-        this.maximumPrice = maximumPrice;
-    }
 
     public Conversao maximumPrice(Double maximumPrice) 
     {
         setMaximumPrice(maximumPrice);
         return this;
-    }
-
-    public Double getMinimumPrice() 
-    {
-        return this.minimumPrice;
-    }
-
-    public void setMinimumPrice(Double minimumPrice) 
-    {
-        this.minimumPrice = minimumPrice;
     }
 
     public Conversao minimumPrice(Double minimumPrice) 
@@ -123,30 +71,10 @@ public class Conversao {
         return this;
     }
 
-    public Double getSalePrice() 
-    {
-        return this.salePrice;
-    }
-
-    public void setSalePrice(Double salePrice) 
-    {
-        this.salePrice = salePrice;
-    }
-
     public Conversao salePrice(Double salePrice) 
     {
         setSalePrice(salePrice);
         return this;
-    }
-
-    public Double getBuyPrice() 
-    {
-        return this.buyPrice;
-    }
-
-    public void setBuyPrice(Double buyPrice) 
-    {
-        this.buyPrice = buyPrice;
     }
 
     public Conversao buyPrice(Double buyPrice) 
@@ -155,40 +83,11 @@ public class Conversao {
         return this;
     }
 
-    public String getImgUrl() 
-    {
-        return this.imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) 
-    {
-        this.imgUrl = imgUrl;
-    }
-
     public Conversao imgUrl(String imgUrl) 
     {
         setImgUrl(imgUrl);
         return this;
     }
-
-    public String getLongDrescription() 
-    {
-        return this.longDescription;
-    }
-
-    public void setLongDrescription(String longDescription) 
-    {
-        this.longDescription = longDescription;
-    }
-
-    public LocalDate getDataDaCotacao(){
-        return this.dataDaCotacao; 
-    }
-
-    public void setDataDaCotacao(LocalDate dataDaCotacao) {
-        this.dataDaCotacao = dataDaCotacao;
-    }
-
 
     @Override
     public int hashCode(){
