@@ -1,8 +1,9 @@
-package com.prometheustecnologi.gerenciamentodeinvestimentos.dto;
+package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao;
 
 import java.time.LocalDate;
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.user.User;
 
 
 public class ConversaoMinDTO {
@@ -13,6 +14,8 @@ public class ConversaoMinDTO {
     private Double buyPrice; 
     private String imgUrl;
     private LocalDate dataDaCotacao;
+
+    private Long usuario;
 
 
     public ConversaoMinDTO() {}
@@ -25,6 +28,7 @@ public class ConversaoMinDTO {
         this.buyPrice = entity.getBuyPrice();
         this.imgUrl = entity.getImgUrl();
         this.dataDaCotacao = entity.getDataDaCotacao();
+        this.usuario = entity.getUsuario().getId();
     }
 
     public Long getId() 
@@ -54,5 +58,9 @@ public class ConversaoMinDTO {
 
     public LocalDate getDataDaCotacao() {
         return this.dataDaCotacao;
+    }
+
+    public Long getUsuario() {
+        return this.usuario;
     }
 }

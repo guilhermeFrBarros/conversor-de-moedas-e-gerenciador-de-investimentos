@@ -2,23 +2,14 @@ package com.prometheustecnologi.gerenciamentodeinvestimentos.services;
 
 
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpClient.Redirect;
-import java.net.http.HttpClient.Version;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.time.Duration;
-import java.util.List;
-
-import org.json.JSONObject;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.DetalConversionDTO;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.prometheustecnologi.gerenciamentodeinvestimentos.dto.ConversaoMinDTO;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversaoMinDTO;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.repositories.ConversaoRepository;
 
@@ -38,11 +29,14 @@ public class ConversaoService {
         return conversaoMinDTOPage;
     }
 
-
-    private List<ConversaoMinDTO> converteEmDto(List<Conversao> cDto){
-      return cDto.stream().map(x -> new ConversaoMinDTO(x)).toList();
-      //  cDto.stream().map(x -> new ConversaoMinDTO(x)).toList();
+    public DetalConversionDTO detalhar(Long id ){
+        var conversion = conversaoRepository.getReferenceById( id );
+        //var conversion = conversaoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Conversao not found"));
+        return new DetalConversionDTO( conversion );
     }
+
+
+
 }
 
 

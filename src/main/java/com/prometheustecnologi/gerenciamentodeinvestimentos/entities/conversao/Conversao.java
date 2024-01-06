@@ -37,7 +37,7 @@ public class Conversao {
     public Conversao() { }
 
     public Conversao(Long id, String nome, Double amount, Double maximumPrice, String shortName,
-     Double minimumPrice, Double salePrice, Double buyPrice, String imgUrl, String longDescription) 
+     Double minimumPrice, Double salePrice, Double buyPrice, String imgUrl, String longDescription, User usuario)
     {
         this.id = id;
         this.nome = nome;
@@ -49,44 +49,7 @@ public class Conversao {
         this.buyPrice = buyPrice;
         this.imgUrl = imgUrl;
         this.longDescription = longDescription;
-    }
-
-    public Conversao id(Long id) 
-    {
-        setId(id);
-        return this;
-    }
-
-
-
-    public Conversao maximumPrice(Double maximumPrice) 
-    {
-        setMaximumPrice(maximumPrice);
-        return this;
-    }
-
-    public Conversao minimumPrice(Double minimumPrice) 
-    {
-        setMinimumPrice(minimumPrice);
-        return this;
-    }
-
-    public Conversao salePrice(Double salePrice) 
-    {
-        setSalePrice(salePrice);
-        return this;
-    }
-
-    public Conversao buyPrice(Double buyPrice) 
-    {
-        setBuyPrice(buyPrice);
-        return this;
-    }
-
-    public Conversao imgUrl(String imgUrl) 
-    {
-        setImgUrl(imgUrl);
-        return this;
+        this.usuario = usuario;
     }
 
     @Override
