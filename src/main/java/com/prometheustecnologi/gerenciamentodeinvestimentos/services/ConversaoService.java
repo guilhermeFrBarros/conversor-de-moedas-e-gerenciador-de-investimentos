@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversaoMinDTO;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.repositories.ConversaoRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ConversaoService {
@@ -29,6 +30,7 @@ public class ConversaoService {
         return conversaoMinDTOPage;
     }
 
+    @Transactional( readOnly = true)
     public DetalConversionDTO detalhar(Long id ){
         var conversion = conversaoRepository.getReferenceById( id );
         //var conversion = conversaoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Conversao not found"));
