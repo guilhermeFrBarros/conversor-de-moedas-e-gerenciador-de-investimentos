@@ -1,9 +1,12 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.cotacao;
 
+import lombok.Getter;
+
 import java.time.LocalDate;
 
 
 
+@Getter
 public class Cotacao {
 
     private String nome;
@@ -27,31 +30,4 @@ public class Cotacao {
     
 
     // getters
-    public String getNome() {
-        return this.nome;
-    }
-
-    public String getShortName() {
-        return this.shortName;
-    }
-
-    public Double getMaximumPrice() {
-        return this.maximumPrice;
-    }
-
-    public Double getMinimumPrice() {
-        return this.minimumPrice;
-    }
-
-    public Double getSalePrice() {
-        return this.salePrice;
-    }
-
-    public Double getBuyPrice() {
-        return this.buyPrice;
-    }
-
-    public LocalDate getDataCotacao() {
-        return this.DataCotacao;
-    }
 }

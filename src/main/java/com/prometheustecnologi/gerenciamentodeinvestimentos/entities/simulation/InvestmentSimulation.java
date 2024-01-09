@@ -2,13 +2,16 @@ package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.simulation
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.user.User;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
 @Entity
 @Table( name = "tb_Simulation" )
 public class InvestmentSimulation {
 
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer Id;

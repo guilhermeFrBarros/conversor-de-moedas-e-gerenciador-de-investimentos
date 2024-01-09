@@ -8,8 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Tb_bolonging")
-public class Belonging {
+@Table(name = "Tb_belonging")
+public class Belonging {//30
     
     @EmbeddedId
     private Belonging_PK id;

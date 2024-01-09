@@ -1,15 +1,15 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao;
 import java.util.Objects;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
 @Entity
+@Table( name = "Tb_consversion_list")
 public class ConversaoList {
     
-    @Id 
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
     private String name;
 
