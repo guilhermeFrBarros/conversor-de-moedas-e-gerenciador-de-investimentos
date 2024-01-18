@@ -1,8 +1,6 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.controllers;
 
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversionCreateDTO;
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.DetalConversionDTO;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +9,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversaoMinDTO;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.services.ConversaoService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -33,21 +30,34 @@ public class ConversaoController {
     }
 
     @PostMapping
-    public  ResponseEntity<ConversionCreateDTO> create(@RequestBody ConversionCreateDTO conversionDTO) {
+    public  ResponseEntity<DetalConversionDTO> create(@RequestBody ConversionCreateDTO conversionDTO) {
         Conversao conversao = conversaoService.create( conversionDTO );
-        conversionDTO = new ConversionCreateDTO( conversao );
+        DetalConversionDTO detalConversionDTO = new DetalConversionDTO( conversao );
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand( conversionDTO.id() ).toUri();
+                .buildAndExpand( detalConversionDTO.id() ).toUri();
 
-        return ResponseEntity.created(uri).body( conversionDTO );
+        return ResponseEntity.created(uri).body( detalConversionDTO );
     }
 
+    @PutMapping
+    public ResponseEntity<DetalConversionDTO> uptadte( @RequestBody ConversionUptadeDTO conversionUptadeDTO) {
+        Conversao conversao  = conversaoService.atualizar( conversionUptadeDTO );
 
+        return ResponseEntity.ok( new DetalConversionDTO( conversao ) );
+    }
 
     // @GetMapping("/param")
     // public ResponseEntity< ConversaoMinDTO > conversion( @RequestParam ( value = )) {
 
     // }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletar ( @PathVariable Long id ) {
+        conversaoService.deletar(id);
+
+        return  ResponseEntity.noContent().build();
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<DetalConversionDTO> detailConversion( @PathVariable Long id ) {

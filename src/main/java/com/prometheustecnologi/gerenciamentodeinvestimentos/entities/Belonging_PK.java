@@ -6,11 +6,14 @@ import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.C
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Embeddable
 public class Belonging_PK {
     
     @ManyToOne
+    @OnDelete( action = OnDeleteAction.CASCADE ) // serve para apagar referencia em outras tablas
     @JoinColumn(name = "convesao_id")
     private Conversao conversao;
 

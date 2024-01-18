@@ -36,24 +36,8 @@ public class Conversao {
 
     public Conversao() { }
 
-    public Conversao(Long id, String nome, Double amount, Double maximumPrice, String shortName,
-     Double minimumPrice, Double salePrice, Double buyPrice, String imgUrl, String longDescription, User usuario)
-    {
-        this.id = id;
-        this.nome = nome;
-        this.amount = amount;
-        this.shortName = shortName;
-        this.maximumPrice = maximumPrice;
-        this.minimumPrice = minimumPrice;
-        this.salePrice = salePrice;
-        this.buyPrice = buyPrice;
-        this.imgUrl = imgUrl;
-        this.longDescription = longDescription;
-        this.usuario = usuario;
-    }
 
     public Conversao( ConversionCreateDTO dados, User user ){
-        id = dados.id();
         nome = dados.nome();
         amount = dados.amount();
         shortName =  dados.shortName();
