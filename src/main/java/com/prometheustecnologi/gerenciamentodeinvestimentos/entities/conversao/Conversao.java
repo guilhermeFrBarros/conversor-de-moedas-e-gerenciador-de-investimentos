@@ -63,6 +63,7 @@ public class Conversao {
         buyPrice = dados.buyPrice();
         imgUrl = dados.imgUrl();
         longDescription = dados.longDescription();
+        dataDaCotacao = dados.dataDaCotacao();
 
         usuario = user;
     }
