@@ -1,5 +1,7 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.controllers;
 
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversionCreateDTO;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.DetalConversionDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,14 +9,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversaoMinDTO;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.services.ConversaoService;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/conversao")
@@ -31,6 +32,15 @@ public class ConversaoController {
         return ResponseEntity.ok( listDeConversoe );
     }
 
+    @PostMapping
+    public  ResponseEntity<ConversionCreateDTO> create(@RequestBody ConversionCreateDTO conversionDTO) {
+        Conversao conversao = conversaoService.create( conversionDTO );
+        conversionDTO = new ConversionCreateDTO( conversao );
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand( conversionDTO.id() ).toUri();
+
+        return ResponseEntity.created(uri).body( conversionDTO );
+    }
 
 
 
@@ -40,7 +50,6 @@ public class ConversaoController {
     // }
 
     @GetMapping("/{id}")
-
     public ResponseEntity<DetalConversionDTO> detailConversion( @PathVariable Long id ) {
        DetalConversionDTO detalConversionDTO = conversaoService.detalhar( id );
 

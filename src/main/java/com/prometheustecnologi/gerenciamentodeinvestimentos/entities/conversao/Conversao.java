@@ -30,7 +30,7 @@ public class Conversao {
     private String longDescription;
     private LocalDate dataDaCotacao;
 
-    @JoinColumn(name = "usuario_pk")
+    @JoinColumn(name = "usuario_pk",referencedColumnName = "id")
     @ManyToOne( fetch = FetchType.LAZY)
     private User usuario;
 
@@ -50,6 +50,21 @@ public class Conversao {
         this.imgUrl = imgUrl;
         this.longDescription = longDescription;
         this.usuario = usuario;
+    }
+
+    public Conversao( ConversionCreateDTO dados, User user ){
+        id = dados.id();
+        nome = dados.nome();
+        amount = dados.amount();
+        shortName =  dados.shortName();
+        maximumPrice = dados.maximumPrice();
+        minimumPrice = dados.minimumPrice();
+        salePrice = dados.salePrice();
+        buyPrice = dados.buyPrice();
+        imgUrl = dados.imgUrl();
+        longDescription = dados.longDescription();
+
+        usuario = user;
     }
 
     @Override
