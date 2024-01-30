@@ -1,4 +1,4 @@
-package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.simulation;
+package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment;
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.user.User;
 import jakarta.persistence.*;
