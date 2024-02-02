@@ -4,15 +4,19 @@ public record SimulationDTO(
         Double valorInicial,
         Double futureValue,
         Double valorMensal,
-        Double taxa,
+        Double juros,
         Integer numeroDeParcelas,
-        Double taxDesc
+        Double taxDesc,
+        Double valorPagoEmTaxa,
+        Double valorInvestido,
+        double rendimento
 ) {
 
 
-    public SimulationDTO(CreateSimulationDTO simulationDTO, Double valorFinal) {
-        this(simulationDTO.valorInicial(), valorFinal, simulationDTO.valorMensal(),
-                simulationDTO.taxa(), simulationDTO.numeroDeParcelasMensais(),
-                simulationDTO.taxDesc());
+    public SimulationDTO(CreateSimulationDTO cSimulationDTO, Double valorFinal,
+                         Double valorPagoEmTaxa, Double valorInvestido, double rendimento ) {
+        this( cSimulationDTO.valorInicial(), valorFinal, cSimulationDTO.valorMensal(),
+                cSimulationDTO.taxa(), cSimulationDTO.numeroDeParcelasMensais(),
+                cSimulationDTO.taxDesc(), valorPagoEmTaxa, valorInvestido, rendimento );
     }
 }
