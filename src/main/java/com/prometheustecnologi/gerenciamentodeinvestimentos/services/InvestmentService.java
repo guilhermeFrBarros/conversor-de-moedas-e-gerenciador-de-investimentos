@@ -1,14 +1,27 @@
 package com.prometheustecnologi.gerenciamentodeinvestimentos.services;
 
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment.CreateSimulationDTO;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment.*;
 
-import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment.SimulationDTO;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment.dtos.CreateSimulationDTO;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment.dtos.PersitSimulationDTO;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment.dtos.SimulationResponseDTO;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.repositories.InvestimentSimulationRepository;
+import com.prometheustecnologi.gerenciamentodeinvestimentos.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class InvestmentService {
 
-    public SimulationDTO simulationInvestment(CreateSimulationDTO cSimulationDTO ) {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private InvestimentSimulationRepository simulationRepository;
+
+    public SimulationResponseDTO simulationInvestment(CreateSimulationDTO cSimulationDTO ) {
 
         var valInicialEmCadaAno = cSimulationDTO.valorInicial();
         var varlorMensal = cSimulationDTO.valorMensal();
@@ -34,7 +47,7 @@ public class InvestmentService {
 
 
 
-    private SimulationDTO calcularDescontoEValorFinal( double valorFinal,CreateSimulationDTO cSimulationDTO){
+    private SimulationResponseDTO calcularDescontoEValorFinal(double valorFinal, CreateSimulationDTO cSimulationDTO){
 
         var valInicial = cSimulationDTO.valorInicial();
         var valorMensal = cSimulationDTO.valorMensal();
@@ -49,10 +62,27 @@ public class InvestmentService {
         valorFinal =  valorFinal + redimentoAnualDesc;
         var valorPagoEmTaxa = redimentoAnual -  redimentoAnualDesc;
 
-        return new SimulationDTO( cSimulationDTO, valorFinal,
+        return new SimulationResponseDTO( cSimulationDTO, valorFinal,
                 valorPagoEmTaxa, valorInvestido, redimentoAnualDesc );
     }
 
 
+    @Transactional
+    public InvestmentSimulation create(PersitSimulationDTO persitSimulationDTO) {
+        var user = userRepository.getReferenceById( persitSimulationDTO.usuarioId() );
+        InvestmentSimulation investmentSimulation = new InvestmentSimulation( persitSimulationDTO, user );
 
+        return simulationRepository.save( investmentSimulation );
+    }
+
+    @Transactional
+    public InvestmentSimulation detalhar(Long id) {
+        var simulation = simulationRepository.findById( id ).orElseThrow();
+
+        return  simulation;
+    }
+
+    public void deletar(Long id) {
+        simulationRepository.deleteById( id );
+    }
 }

@@ -1,6 +1,8 @@
-package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment;
+package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment.dtos;
 
-public record SimulationDTO(
+import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.investment.dtos.CreateSimulationDTO;
+
+public record SimulationResponseDTO(
         Double valorInicial,
         Double futureValue,
         Double valorMensal,
@@ -13,8 +15,8 @@ public record SimulationDTO(
 ) {
 
 
-    public SimulationDTO(CreateSimulationDTO cSimulationDTO, Double valorFinal,
-                         Double valorPagoEmTaxa, Double valorInvestido, double rendimento ) {
+    public SimulationResponseDTO(CreateSimulationDTO cSimulationDTO, Double valorFinal,
+                                 Double valorPagoEmTaxa, Double valorInvestido, double rendimento ) {
         this( cSimulationDTO.valorInicial(), valorFinal, cSimulationDTO.valorMensal(),
                 cSimulationDTO.taxa(), cSimulationDTO.numeroDeParcelasMensais(),
                 cSimulationDTO.taxDesc(), valorPagoEmTaxa, valorInvestido, rendimento );

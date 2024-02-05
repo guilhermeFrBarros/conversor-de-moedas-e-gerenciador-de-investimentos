@@ -1,4 +1,4 @@
-package com.prometheustecnologi.gerenciamentodeinvestimentos.entities;
+package com.prometheustecnologi.gerenciamentodeinvestimentos.entities.belonging;
 
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.Conversao;
 import com.prometheustecnologi.gerenciamentodeinvestimentos.entities.conversao.ConversaoList;
