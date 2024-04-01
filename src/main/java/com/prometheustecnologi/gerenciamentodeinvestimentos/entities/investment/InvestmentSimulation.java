@@ -34,6 +34,7 @@ public class InvestmentSimulation {
     private Double valorInvestido;
     private Double rendimento;
     private LocalDate dataDaSimulacao;
+    private String description;
 
     @JoinColumn(name = "usuario_pk")
     @ManyToOne( fetch = FetchType.LAZY )
@@ -50,6 +51,7 @@ public class InvestmentSimulation {
         this.valorInvestido = dadosDTO.valorInvestido();
         this.rendimento = dadosDTO.rendimento();
         this.dataDaSimulacao = LocalDate.now();
+        this.description = dadosDTO.description();
         this.usuario = user;
     }
 

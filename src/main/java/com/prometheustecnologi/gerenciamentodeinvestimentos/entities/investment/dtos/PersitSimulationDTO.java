@@ -30,6 +30,7 @@ public record PersitSimulationDTO(
         Double valorInvestido,
         @Negative
         double rendimento,
+        String description,
         @NotNull
         Long usuarioId
 ) {

@@ -18,13 +18,15 @@ public record DetalSimulationDTO(
         double rendimento,
 
         LocalDate data,
+        String description,
         Long usuarioId
 ) {
     public DetalSimulationDTO(InvestmentSimulation iSimulation) {
         this( iSimulation.getId(), iSimulation.getValorInicial(), iSimulation.getFutureValue(),
                 iSimulation.getValorRegular(), iSimulation.getJuros(), iSimulation.getNumeroDeParcelas(),
                 iSimulation.getTaxaDesc(), iSimulation.getValorPagoEmTaxa(), iSimulation.getValorInvestido(),
-                iSimulation.getRendimento(), iSimulation.getDataDaSimulacao(), iSimulation.getUsuario().getId()
+                iSimulation.getRendimento(), iSimulation.getDataDaSimulacao(), iSimulation.getDescription(),
+                iSimulation.getUsuario().getId()
                 );
     }
 }
