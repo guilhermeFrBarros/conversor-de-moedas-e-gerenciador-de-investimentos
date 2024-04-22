@@ -1,4 +1,7 @@
+
 INSERT INTO usuarios (email, senha, telefone) VALUES ( 'guilhermeg@gmail.com', '123456', '3528-0000' );
+insert into usuarios values (2, 'ana.souza@voll.med', '$2a$10$ITcQtzQNzScbpC1c9uWk3.UTxyTpjnzQ4L9AwgJ9fCj5PpvtJdyoq', '4444-4444')
+
 
 INSERT INTO Tb_consversion_list (name) VALUES ( 'Dolar Americano/Real Brasileiro' );
 INSERT INTO Tb_consversion_list (name) VALUES ( 'Euro/Real Brasileiro' );
@@ -11,5 +14,3 @@ INSERT INTO TB_CONVERCAO (nome, SHORT_NAME, amount, BUY_PRICE, SALE_PRICE, MAXIM
 INSERT INTO tb_belonging (list_id, convesao_id, position) VALUES (1, 1, 0);
 INSERT INTO tb_belonging (list_id, convesao_id, position) VALUES (2, 2, 1);
 INSERT INTO tb_belonging (list_id, convesao_id, position) VALUES (2, 3, 2);
-
-
