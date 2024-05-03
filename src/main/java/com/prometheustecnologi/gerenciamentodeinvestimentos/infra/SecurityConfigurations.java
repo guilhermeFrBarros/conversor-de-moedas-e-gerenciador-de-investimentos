@@ -22,7 +22,6 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 public class SecurityConfigurations {
 
 
-
     // My enpdoints start from /v1 so this pattern is ok for me
     private static final String API_URL_PATTERN = "/**";
 
@@ -41,11 +40,13 @@ public class SecurityConfigurations {
         http.headers(headersConfigurer ->
                 headersConfigurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
-        http.authorizeHttpRequests(auth ->
-                auth//mvcMatcherBuilder.pattern(HttpMethod.POST,"/auth")
-                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST,"/auth")).permitAll()
-                        .requestMatchers(PathRequest.toH2Console()).permitAll()
-                        .anyRequest().authenticated()
+        http
+            .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth ->
+                auth//
+                    .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST,"/auth")).permitAll()
+                    .requestMatchers(PathRequest.toH2Console()).permitAll()
+                    .anyRequest().authenticated()
         );
 
 //        http.formLogin(Customizer.withDefaults());
