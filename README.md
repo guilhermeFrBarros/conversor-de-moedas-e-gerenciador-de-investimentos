@@ -18,6 +18,4 @@ Este projeto é uma aplicação de gerenciamento e simulação de investimentos 
 Para executar este projeto, você precisará do JDK 17 e do Maven instalados.
 
 ```bash
-git clone https://seu-repositorio/projeto-investimentos.git
-cd projeto-investimentos
-mvn spring-boot:run
+git clone https://github.com/guilhermeFrBarros/conversor-de-moedas-e-gerenciador-de-investimentos.git
