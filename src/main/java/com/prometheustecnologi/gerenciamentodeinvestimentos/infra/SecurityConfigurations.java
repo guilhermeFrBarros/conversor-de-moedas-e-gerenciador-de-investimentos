@@ -29,7 +29,7 @@ public class SecurityConfigurations {
     public SecurityFilterChain getSecurityFilterChain(HttpSecurity http,
                                                       HandlerMappingIntrospector introspector) throws Exception
     {
-        //
+        //   ----
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
 
         // está liberando solicitações para a url(API_URL_PATTERN ) e par ao h2 console
